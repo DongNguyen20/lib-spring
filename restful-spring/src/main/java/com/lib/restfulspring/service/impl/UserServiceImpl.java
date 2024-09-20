@@ -3,6 +3,7 @@ package com.lib.restfulspring.service.impl;
 import com.lib.restfulspring.dto.UserCreateRequest;
 import com.lib.restfulspring.dto.UserInfoDto;
 import com.lib.restfulspring.entity.UserEntity;
+import com.lib.restfulspring.exception.ApplicationException;
 import com.lib.restfulspring.mapper.UserMapper;
 import com.lib.restfulspring.repository.UserRepository;
 import com.lib.restfulspring.service.UserService;
@@ -25,12 +26,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfoDto createUser(UserCreateRequest request) {
         var isExistUserName = userRepository.existsByUsername(request.getUsername());
-        if (!isExistUserName) {
-            var user = UserEntity.builder().username(request.getUsername())
-                    .password(request.getPassword()).build();
-            userRepository.save(user);
-            return userMapper.toUserInfoDto(user);
+
+        if (isExistUserName) {
+            throw new ApplicationException("Username already exists");
         }
-        return null;
+        var user = UserEntity.builder().username(request.getUsername())
+                .password(request.getPassword()).build();
+        userRepository.save(user);
+        return userMapper.toUserInfoDto(user);
     }
 }
