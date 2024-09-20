@@ -2,15 +2,10 @@ package com.lib.restfulspring.mapper;
 
 import com.lib.restfulspring.dto.UserInfoDto;
 import com.lib.restfulspring.entity.UserEntity;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
-@NoArgsConstructor(access = AccessLevel.NONE)
-public class UserMapper {
-    public static UserInfoDto toUserInfoDto(UserEntity entity) {
-        return UserInfoDto.builder()
-               .id(entity.getId())
-               .username(entity.getUsername())
-               .build();
-    }
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public interface UserMapper {
+    UserInfoDto toUserInfoDto(UserEntity entity);
 }

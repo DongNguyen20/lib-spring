@@ -14,9 +14,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Override
     public List<UserInfoDto> getUserInfos() {
-        return userRepository.findAll().stream().map(UserMapper::toUserInfoDto).collect(Collectors.toList());
+        return userRepository.findAll().stream().map(userMapper::toUserInfoDto).toList();
     }
 }
