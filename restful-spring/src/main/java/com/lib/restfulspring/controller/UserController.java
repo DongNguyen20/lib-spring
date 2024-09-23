@@ -5,6 +5,8 @@ import com.lib.restfulspring.dto.UserInfoDto;
 import com.lib.restfulspring.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,11 @@ public class UserController {
     @GetMapping
     public List<UserInfoDto> getUserInfos() {
         return userService.getUserInfos();
+    }
+
+    @GetMapping("/paging")
+    public List<UserInfoDto> getUserInfos(@PageableDefault Pageable pageable) {
+        return userService.getUserInfos(pageable);
     }
 
     @PostMapping
