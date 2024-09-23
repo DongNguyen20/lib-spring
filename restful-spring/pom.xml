@@ -30,6 +30,7 @@
         <java.version>17</java.version>
         <postgresql.version>42.2.23</postgresql.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+        <springdoc.api.version>2.3.0</springdoc.api.version>
     </properties>
     <dependencies>
         <dependency>
@@ -47,6 +48,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.api.version}</version>
         </dependency>
 
         <dependency>
