@@ -31,6 +31,7 @@
         <postgresql.version>42.2.23</postgresql.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <springdoc.api.version>2.3.0</springdoc.api.version>
+        <jacoco.version>0.8.12</jacoco.version>
     </properties>
     <dependencies>
         <dependency>
@@ -102,6 +103,26 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <!-- Plugin JaCoCo -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
