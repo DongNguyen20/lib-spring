@@ -3,16 +3,16 @@
 #### Mục lục:
 
 ___
-- [Stream](####-I-Stream-🥇)
-- [Error & Exception](####-ii-error-&-xception)
-- [Multithreading](####-iii-multithreading)
-- [Java Synchronization](####-iv-java-synchronization)
-- [Networking](####-v-networking)
-- [Collections](####-vi-Collections)
-- [Interfaces](####-VII-Interfaces)
-- [Data Structures](####-VIII-Data-Structures)
-- [Advanced](####-IX-Advanced)
-- [APIs & Frameworks](####-X-Apis-Framework)
+- [Stream](#I-Stream-)
+- [Error & Exception](#ii-error--xception)
+- [Multithreading](#iii-multithreading)
+- [Java Synchronization](#iv-java-synchronization)
+- [Networking](#v-networking)
+- [Collections](#vi-Collections)
+- [Interfaces](#VII-Interfaces)
+- [Data Structures](#VIII-Data-Structures)
+- [Advanced](#IX-Advanced)
+- [APIs & Frameworks](#X-Apis-Framework)
 ___
 
 #### I. Stream 🥇
