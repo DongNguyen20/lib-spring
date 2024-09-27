@@ -1,18 +1,18 @@
-#Logging
+# Logging
 
 _**Mục đích**: theo dõi hoạt động của ứng dụng, phát hiện lỗi và ghi lại thông tin hữu ích cho việc bảo trì._
 
 _**Một số thư viện:**_ `Java Util Logging(JUL)`, `Log4j`, `Logback`, `SLF4J`
 
 
-###I. Cấu hình logging: 
-####1. Sử dụng `application.properties`
+### I. Cấu hình logging: 
+#### 1. Sử dụng `application.properties`
 ```properties
 logging.level.root=INFO
 logging.level.com.example=DEBUG
 logging.file.name=logs/app.log
 ```
-####2. Sử dụng `logback-spring.xml`
+#### 2. Sử dụng `logback-spring.xml`
 ```xml
 <configuration>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -48,7 +48,7 @@ logging.file.name=logs/app.log
     </root>
 </configuration>
 ```
-####3. Sử dụng Logging trong ứng dụng 
+#### 3. Sử dụng Logging trong ứng dụng 
 
 ```java
 import org.slf4j.Logger;
@@ -69,7 +69,7 @@ public class MyService {
     }
 }
 ```
-####4. Mức độ Log
+#### 4. Mức độ Log
 `level: ERROR > WARN > INFO > DEBUG > TRACE`
    - **ERROR** : Mức cao nhất, chỉ nên sử dụng khi thực sự có lỗi nghiêm trọng.
    - **WARN**  : Dùng để cảnh báo về vấn đề có thể xảy ra nhưng không ảnh hưởng ngay lập tức đến hoạt động.
