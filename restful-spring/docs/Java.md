@@ -4,7 +4,7 @@
 
 ___
 - [Stream](#I-Stream-)
-- [Error & Exception](#ii-error-&-xception)
+- [Error & Exception](#ii-error-&-xception-)
 - [Multithreading](#iii-multithreading)
 - [Java Synchronization](#iv-java-synchronization)
 - [Networking](#v-networking)
@@ -15,7 +15,7 @@ ___
 - [APIs & Frameworks](#X-Apis-Framework)
 ___
 
-#### I. Stream 🥇
+#### I. Stream 🌌
 _Java Stream API là một tính năng được giới thiệu từ Java 8, cung cấp một cách tiếp cận hiện đại để xử lý các tập hợp 
 dữ liệu theo phong cách lập trình hàm (functional programming). Stream cho phép bạn thực hiện các thao tác như lọc,
 sắp xếp, ánh xạ (mapping), và thu thập dữ liệu một cách đơn giản và hiệu quả mà không cần thay đổi dữ liệu gốc._
@@ -72,9 +72,9 @@ _Trong Java, cả `Error` và `Exception` đều là các lớp con của lớp 
 
 Ví dụ về các loại Error:
 
-+ OutOfMemoryError: Xảy ra khi JVM không còn đủ bộ nhớ để cấp phát.
-+ StackOverflowError: Xảy ra khi một phương thức đệ quy gọi liên tục mà không có điểm dừng, dẫn đến tràn stack.
-+ VirtualMachineError: Xảy ra khi JVM gặp một lỗi nghiêm trọng.
++ **OutOfMemoryError**: Xảy ra khi JVM không còn đủ bộ nhớ để cấp phát.
++ **StackOverflowError**: Xảy ra khi một phương thức đệ quy gọi liên tục mà không có điểm dừng, dẫn đến tràn stack.
++ **VirtualMachineError**: Xảy ra khi JVM gặp một lỗi nghiêm trọng.
 
 Ví dụ về Error:
 ```java
@@ -145,6 +145,27 @@ So sánh :
 |Loại sử dụng| Thường sử dụng với cả checked và unchecked| Chủ yếu được sử dụng cho checked exceptions|
 
 #### III. Multithreading
+##### 1. 📈 Thread
+- `Thread` là đơn vị nhỏ nhất của quá trình thực thi trong một ứng dụng. Một chương trình Java mặc định có ít nhất một luồng chính (main thread) thực thi phương thức `main()`.
+- `Multithreading` là kỹ thuật chạy đồng thời nhiều luồng trong cùng một quá trình (process). Mỗi luồng có ngữ cảnh thực thi riêng (stack riêng), nhưng chúng chia sẻ bộ nhớ chung của quá trình.
+
+###### Lợi ích của Multithreading
+- **Tăng hiệu suất**: Multithreading giúp tận dụng tối đa CPU, đặc biệt là các CPU đa lõi, bằng cách thực thi các luồng đồng thời.
+- **Đáp ứng tốt hơn**: Ứng dụng có thể xử lý nhiều tác vụ cùng một lúc, giúp giảm thời gian phản hồi và tăng trải nghiệm người dùng.
+- **Đơn giản hóa thiết kế**: Một số vấn đề phức tạp (ví dụ như giao tiếp mạng hoặc xử lý I/O) trở nên dễ quản lý hơn khi được tách thành các luồng riêng biệt
+
+###### a. Lifecycle
+![img_2.png](img_2.png)
+- `NEW` : Đây là trạng thái khi luồng vừa được khởi tạo bằng phương thức khởi tạo của lớp Thread nhưng chưa được start(). Ở trạng thái này, luồng được tạo ra nhưng chưa được cấp phát tài nguyên và cũng chưa chạy. Nếu luồng đang ở trạng thái này mà ta gọi các phương thức ép buộc stop,resume,suspend … sẽ là nguyên nhân sảy ra ngoại lệ IllegalThreadStateException .
+- `RUNNABLE` : Sau khi gọi phương thức start() thì luồng test đã được cấp phát tài nguyên và các lịch điều phối CPU cho luồng test cũng bắt đầu có hiệu lực. Ở đây, chúng ta dùng trạng thái là Runnable chứ không phải Running, vì luồng không thực sự luôn chạy mà tùy vào hệ thống mà có sự điều phối CPU khác nhau.
+- `WAITING` : Thread chờ không giới hạn cho đến khi một luồng khác đánh thức nó.
+- `TIMED_WAITING` : Thread chờ trong một thời gian nhất định, hoặc là có một luồng khác đánh thức nó.
+- `BLOCKED`: Đây là 1 dạng của trạng thái “Not Runnable”, là trạng thái khi Thread vẫn còn sống, nhưng hiện tại không được chọn để chạy. Thread chờ một monitor để unlock một đối tượng mà nó cần.
+- `TERMINATED` : Một thread ở trong trạng thái terminated hoặc dead khi phương thức run() của nó bị thoát.
+##### 2. Cách tạo luồng 
+Trong java ta có thể tạo ra một luồng bằng một trong hai cách sau: tạo 1 đối tượng của lớp được `extend` từ class **Thread** hoặc `implements` từ interface **Runnable**.
+
+
 #### IV. Java Synchronization
 #### V. Networking
 #### VI. Collections
