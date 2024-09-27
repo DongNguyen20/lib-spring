@@ -4,7 +4,7 @@
 
 ___
 - [Stream](#I-Stream-)
-- [Error & Exception](#ii-error-&-xception-)
+- [Error & Exception](#ii-error-&-xception⚡)
 - [Multithreading](#iii-multithreading)
 - [Java Synchronization](#iv-java-synchronization)
 - [Networking](#v-networking)
