@@ -4,7 +4,7 @@
 
 ___
 - [Stream](#I-Stream-)
-- [Error & Exception](#ii-error-&-xception⚡)
+- [Error & Exception](#ii-error-&-exception-)
 - [Multithreading](#iii-multithreading)
 - [Java Synchronization](#iv-java-synchronization)
 - [Networking](#v-networking)
@@ -60,7 +60,7 @@ System.out.println(sum); // Output: 15
 + Không nên thay đổi trạng thái của phần tử trong Stream (phương thức peek() chỉ nên sử dụng cho việc ghi log hoặc debug).
 + Tránh sử dụng parallelStream() trên các tập dữ liệu nhỏ, vì chi phí tạo luồng song song có thể cao hơn lợi ích đạt được.
 + Stream là một chiều, không thể sử dụng lại.
-#### II. Error & Exception⚡
+#### II. Error & Exception ⚡
 ##### 1. What❓
 _Trong Java, cả `Error` và `Exception` đều là các lớp con của lớp `Throwable`, được sử dụng để chỉ ra các tình huống bất thường hoặc lỗi xảy ra trong chương trình._
 ![img.png](img.png)
