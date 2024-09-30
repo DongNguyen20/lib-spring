@@ -164,7 +164,71 @@ So sánh :
 - `TERMINATED` : Một thread ở trong trạng thái terminated hoặc dead khi phương thức run() của nó bị thoát.
 ##### 2. Cách tạo luồng 
 Trong java ta có thể tạo ra một luồng bằng một trong hai cách sau: tạo 1 đối tượng của lớp được `extend` từ class **Thread** hoặc `implements` từ interface **Runnable**.
+###### a. Kế thừa lớp Thread
+```java
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(Thread.currentThread().getName() + " is running: " + i);
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        MyThread thread1 = new MyThread();
+        MyThread thread2 = new MyThread();
 
+        thread1.start(); // Bắt đầu luồng 1
+        thread2.start(); // Bắt đầu luồng 2
+    }
+}
+```
+`💥 Lưu ý:` Sau khi `start` một thread, nó không bao giờ có thể được start lại. Nếu cố gắng start sẽ throw `IllegalThreadStateException`
+
+###### b. Implement interface Runnable
+```java
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(Thread.currentThread().getName() + " is running: " + i);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new MyRunnable());
+        Thread thread2 = new Thread(new MyRunnable());
+
+        thread1.start(); // Bắt đầu luồng 1
+        thread2.start(); // Bắt đầu luồng 2
+    }
+}
+```
+
+##### ⚔️So sánh
+|Tiêu chí|extends Thread | 	implements Runnable |
+| :--- | :--- | :--- |
+|Kế thừa |Đã kế thừa từ Thread, không thể kế thừa lớp khác |Có thể kế thừa một lớp khác do không bị hạn chế|
+|Tách biệt logic|Logic của luồng và việc quản lý luồng là cùng một lớp|Tách biệt rõ ràng logic của luồng và quản lý luồng|
+|Khi nào sử dụng|Đơn giản hóa việc mã hóa, thay đổi hành vi của method trong Thread|Sử dụng các dịch vụ quản lý luồng như `ExecutorService`|
+###### c. Một số method thường dùng
+- **suspend()**: tam dùng hoạt động của 1 luồng bằng cách ngưng cung cấp CPU cho luồng này.(không ngừng ngay tức thì)
+- **resume()**: làm luồng chạy lại sau khi bị dừng do `suspend()`
+- **stop()**: kết thúc method `run()` bằng cách ném ra 1 ngoại lệ ThreadDeath. Có thể gây deadlock
+- **destroy()**: dừng hẳn luồng.
+- **yeild()**: khi gọi phương thức này luồng sẽ bị ngừng cấp CPU và nhường cho luồng tiếp theo trong hàng chờ Ready. Luồng không phải ngưng cấp CPU như suspend mà chỉ ngưng cấp trong lần nhận CPU đó mà thôi.
+- **sleep()**: tạm dừng luồng trong một khoảng thời gian millisecond.
+- **join()**: thông báo rằng hãy chờ thread này hoàn thành rồi thread cha mới được tiếp tục chạy.
+- **join(long)** : Thread cha cần phải đợi millisecond mới được tiếp tục chạy, kể từ lúc gọi join(long). Nếu tham số millis = 0 nghĩa là đợi cho tới khi luồng này kết thúc.
+- **getPriority()** : Trả về mức độ ưu tiên của thread.
+>Java có định nghĩa sẵn 3 mức ưu tiên chuẩn như sau:
+>
+>Thread.**MIN_PRIORITY** (giá trị 01);
+>Thread.**NORM_PRIORITY** (giá trị 05);
+>Thread.**MAX_PRIORITY** (giá trị 10)
 
 #### IV. Java Synchronization
 #### V. Networking
