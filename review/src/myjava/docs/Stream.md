@@ -4,7 +4,7 @@
   thông qua các hoạt động pipeline (chuỗi các bước xử lý).
 - Stream không thay đổi nguồn dữ liệu gốc (non-mutating), tức là không làm thay đổi collection, array hoặc source của stream.
 - Stream có thể được xử lý song song (parallel) để tận dụng tối đa hiệu suất xử lý đa luồng
-![img.png](../img/img.png)
+![img.png](../img/stream.png)
 ### 1. Các loại Stream
 ```
 Stream<T>   (Generic Stream for Objects):
