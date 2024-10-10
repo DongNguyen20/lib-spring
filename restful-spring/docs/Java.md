@@ -63,7 +63,7 @@ System.out.println(sum); // Output: 15
 #### II. Error & Exception ⚡
 ##### 1. What❓
 _Trong Java, cả `Error` và `Exception` đều là các lớp con của lớp `Throwable`, được sử dụng để chỉ ra các tình huống bất thường hoặc lỗi xảy ra trong chương trình._
-![img.png](img.png)
+![img.png](img/img.png)
 
 ###### _a. Error_
 - Error là những vấn đề nghiêm trọng, thường liên quan đến môi trường thực thi của chương trình (runtime environment) mà không thể hoặc không nên xử lý trong mã nguồn của bạn.
@@ -155,7 +155,7 @@ So sánh :
 - **Đơn giản hóa thiết kế**: Một số vấn đề phức tạp (ví dụ như giao tiếp mạng hoặc xử lý I/O) trở nên dễ quản lý hơn khi được tách thành các luồng riêng biệt
 
 ###### a. Lifecycle
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
 - `NEW` : Đây là trạng thái khi luồng vừa được khởi tạo bằng phương thức khởi tạo của lớp Thread nhưng chưa được start(). Ở trạng thái này, luồng được tạo ra nhưng chưa được cấp phát tài nguyên và cũng chưa chạy. Nếu luồng đang ở trạng thái này mà ta gọi các phương thức ép buộc stop,resume,suspend … sẽ là nguyên nhân sảy ra ngoại lệ IllegalThreadStateException .
 - `RUNNABLE` : Sau khi gọi phương thức start() thì luồng test đã được cấp phát tài nguyên và các lịch điều phối CPU cho luồng test cũng bắt đầu có hiệu lực. Ở đây, chúng ta dùng trạng thái là Runnable chứ không phải Running, vì luồng không thực sự luôn chạy mà tùy vào hệ thống mà có sự điều phối CPU khác nhau.
 - `WAITING` : Thread chờ không giới hạn cho đến khi một luồng khác đánh thức nó.
