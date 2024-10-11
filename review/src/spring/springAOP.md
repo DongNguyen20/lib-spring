@@ -55,10 +55,15 @@ public class LoggingAspect {
   }
 }
 ```
+
 Phân tích:
+
 ![img.png](img/ex_log_advice.png)
+
 Tạo pointcut:
+
 ![img.png](img/tao_pointcut.png)
+
 _Trong trường hợp muốn hạn chế các điểm joint point khớp với biểu thức, ta có thể sử dụng biểu thức && (và), || (hoặc), ! (phủ định) để kết xây dựng biểu thức. Biểu thức ở dưới đây có nghĩa, xác định các điểm join point là thực thi phương thức updateProduct() khi có lời gọi từ phương thức OrderController()._
 ```
 execution(* com.pad.loggingwithaop.service.ProductService.updateProduct(..)) && within(com.pad.loggingwithaop.controller.OrderController)
