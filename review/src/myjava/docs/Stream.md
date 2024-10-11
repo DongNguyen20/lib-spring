@@ -61,3 +61,97 @@ Stream<String> lines = Files.lines(Paths.get("data.txt"));
 ```java
 Stream<Integer> infiniteStream = Stream.iterate(0, n -> n + 2);
 ```
+
+## Một số chuyển đổi 🎯 và Ưu tiên 🔝 ✅
+**Arrays** and **Stream**
+### 1. Dữ liệu nguyên thuỷ 
+_(boolean, char, byte, short, int, long, float, double)_
+
+- **Sort**: dùng `Arrays.sort()` cho các trường hợp thông thường và `Arrays.paralletSort()` cho các mảng lớn
+  
+```java
+// Sắp xếp giảm dần
+Arrays.sort(arrBoxed, Collections.reverseOrder());
+```
+
+- **min/max**:
+  + `for loop`
+  + dùng `boxed`
+
+```java
+int max = Arrays.stream(arr).max().getAsInt();
+int min = Arrays.stream(arr).min().getAsInt();
+```
+### 2. Dữ liệu Object
+- **Sort**:
+
+```java
+Collections.sort(list, Collections.reverseOrder());
+// sort PersonList by age desc
+list.sort(Comporator.comparingInt(Person::getAge).reversed());
+```
+
+- **min/max**:
+```java
+list.stream().min(Comparator.comparingInt((Person p) -> p.age)
+        .thenComparing(p -> p.name)).orElseThrow();
+```
+### 3. Chuyển đổi 🔄
+
+#### a. array  ➜  List
+
+```java
+String[] array = {"apple", "banana", "orange"};
+// Chuyển đổi mảng sang List
+List<String> list = Arrays.asList(array);
+```
+
+#### b. List ➜ Map
+
+```java
+List<String> list = Arrays.asList("apple", "banana", "orange");
+// Chuyển đổi List thành Map (key là chuỗi, value là độ dài chuỗi)
+Map<String, Integer> map = list.stream()
+        .collect(Collectors.toMap(s -> s, s -> s.length()));
+
+List<Person> people = Arrays.asList(
+new Person("Alice", 30),
+new Person("Bob", 25),
+new Person("Charlie", 30),
+new Person("David", 25),
+new Person("Eve", 35)
+);
+
+// Nhóm danh sách các Person theo tuổi
+Map<Integer, List<Person>> groupedByAge = people.stream()
+.collect(Collectors.groupingBy(Person::getAge));
+```
+
+**Output** `groupedByAge`:
+
+```groovy
+Age: 25 -> [Person{name='Bob', age=25}, Person{name='David', age=25}]
+Age: 30 -> [Person{name='Alice', age=30}, Person{name='Charlie', age=30}]
+Age: 35 -> [Person{name='Eve', age=35}]
+```
+#### c. Map ➜ listKey
+
+```java
+List<String> keys = new ArrayList<>(map.keySet());
+```
+
+#### d. String ➜ Int array
+
+```java
+String[] stringArray = {"1", "2", "3"};
+int[] intArray = Arrays.stream(stringArray)
+                       .mapToInt(Integer::parseInt)
+                       .toArray();
+```
+
+### e. Map ➜ Set
+```java
+Set<Integer> valueSet = new HashSet<>(map.values());
+```
+
+
