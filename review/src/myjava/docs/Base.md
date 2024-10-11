@@ -9,5 +9,8 @@
 |Cơ chế quản lý của Heap thì phức tạp hơn. Heap được phân làm 2 loại Young-Generation, Old-Generation| Cơ chế hoạt động là LIFO (Last-In-First-Out)|
 |Dung lượng Heap thường lớn hơn Stack|Bộ nhớ stack thường nhỏ|
 
+### DataType
+![img.png](../img/java_datatype.png)
+
 ### String, StringBuilder, StringBuffer
 ![img.png](../img/StringPool.png)
