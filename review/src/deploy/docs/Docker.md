@@ -22,7 +22,7 @@ _Đây là tên của Docker image được sử dụng để tạo container. I
 ## Container và Image Docker
 - **Image**: Là một bản sao tĩnh của ứng dụng, chứa mã nguồn và mọi thứ cần thiết để chạy ứng dụng.
 - **Container**: Là môi trường chạy ứng dụng dựa trên Image.
-![img_1.png](../img/flow.png)
+![img_1.png](../img/docker_flow.png)
   
 ### Mối tương quan:
 - **Dockerfile**  ➜ tạo **Docker Image** ➜ Chạy thành **Containers**
