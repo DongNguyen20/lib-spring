@@ -4,7 +4,7 @@
 
 1. [Dependencies](#i-dependencies)
 2. [Configuration](#ii-configuration)
-3. 
+3. [Algorithm](#iii-algorithms-encode)
 
 ## I. Dependencies
 - Spring Web
@@ -171,4 +171,27 @@ public class SecurityConfig {
     }
 }
 
+```
+## III. Algorithms Encode
+
+📶 _Sorted Asc:_
+
+- **secure**: `SHA` < `PBKDF2` < `BCrypt` < `Argon2`
+
+_using Argon2:_
+```xml
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-crypto</artifactId>
+</dependency>
+```
+```java
+@Bean
+public PasswordEncoder passwordEncoder() {
+    Map<String, PasswordEncoder> encoders = new HashMap<>();
+    encoders.put("bcrypt", new BCryptPasswordEncoder());
+    encoders.put("pbkdf2", new Pbkdf2PasswordEncoder());
+    encoders.put("argon2", new Argon2PasswordEncoder());
+    return new DelegatingPasswordEncoder("bcrypt", encoders);
+}
 ```
