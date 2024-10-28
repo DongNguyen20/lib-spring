@@ -3,6 +3,7 @@ package com.kopw.spring.service;
 import com.kopw.spring.entity.UserEntity;
 import com.kopw.spring.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,9 @@ public class UserService {
 
     @Transactional
     public void createUser(String username, String rawPassword, String role) {
+        if (userRepository.existsByUsername(username)) {
+            throw new DuplicateKeyException("Username is already taken.");
+        }
         UserEntity user = UserEntity.builder()
                 .username(username)
                 .password(passwordEncoder.encode(rawPassword))

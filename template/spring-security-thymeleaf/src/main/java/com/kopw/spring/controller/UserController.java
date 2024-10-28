@@ -2,7 +2,9 @@ package com.kopw.spring.controller;
 
 import com.kopw.spring.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,4 +33,19 @@ public class UserController {
         userService.createUser(username, password, role);
         return LOGIN;
     }
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/user")
+    public String userPage(Model model) {
+        model.addAttribute("message", "Welcome to the User Page!");
+        return "welcome";
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin")
+    public String adminPage(Model model) {
+        model.addAttribute("message", "Welcome to the Admin Page!");
+        return "welcome";
+    }
+
 }
