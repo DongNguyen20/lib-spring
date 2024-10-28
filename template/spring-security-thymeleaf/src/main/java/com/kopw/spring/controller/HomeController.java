@@ -3,21 +3,26 @@ package com.kopw.spring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import static com.kopw.spring.common.AppConstants.HOME;
+import static com.kopw.spring.common.AppConstants.LOGIN;
+import static com.kopw.spring.common.AppConstants.SLASH;
+import static org.springframework.security.config.Elements.LOGOUT;
+
 @Controller
 public class HomeController {
 
-    @GetMapping("/login")
+    @GetMapping(SLASH + LOGIN)
     public String login() {
-        return "login";
+        return LOGIN;
     }
 
-    @GetMapping("/home")
+    @GetMapping(SLASH + HOME)
     public String home() {
-        return "home";
+        return HOME;
     }
 
-    @GetMapping("/logout")
+    @GetMapping(SLASH + LOGOUT)
     public String logout() {
-        return "login";
+        return LOGIN;
     }
 }
