@@ -5,12 +5,15 @@ Tech:
 - Spring Security
 - Spring JPA + PostgresSQL
 - JWT
+
 ![img_1.png](src/main/resources/templates/img/jwt.png)
 
 _Flow process:_
+
 ![img.png](src/main/resources/templates/img/flow_access.png)
 
 _Architecture:_
+
 ![img_2.png](src/main/resources/templates/img/security_architecture.png)
 
 ### MỤC LỤC
