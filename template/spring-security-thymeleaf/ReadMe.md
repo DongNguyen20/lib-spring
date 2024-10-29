@@ -5,6 +5,8 @@
 1. [Dependencies](#i-dependencies)
 2. [Configuration](#ii-configuration)
 3. [Algorithm](#iii-algorithms-encode)
+4. [Authorization](#iv-authorization)
+5. [Session](#v-session)
 
 ## I. Dependencies
 - Spring Web
@@ -195,3 +197,42 @@ public PasswordEncoder passwordEncoder() {
     return new DelegatingPasswordEncoder("bcrypt", encoders);
 }
 ```
+
+## IV. Authorization
+
+Using `@PreAuthorize`:
+```java
+@PreAuthorize("hasRole('ADMIN')")
+@GetMapping("/admin")
+public String adminPage() {
+    // "Welcome to the Admin Page!"
+    return "admin";
+}
+
+//config
+@EnableMethodSecurity(prePostEnabled = true)
+public class SecurityConfig {}
+```
+
+## V. Session
+
+Config
+- `application.properties`
+```properties
+server.servlet.session.timeout=30m
+```
+- `SecurityConfig`
+```java
+.logout(logout -> logout
+        .invalidateHttpSession(true) // clear session
+        .deleteCookies("JSESSIONID") // delete cookie
+        .permitAll()
+        .logoutSuccessUrl("/login?logout")
+        )
+.sessionManagement(session -> session
+        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        .maximumSessions(1) // one user using at one point
+        .maxSessionsPreventsLogin(true) // prevent login while using
+        );
+```
+
