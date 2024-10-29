@@ -5,12 +5,22 @@ Tech:
 - Spring Security
 - Spring JPA + PostgresSQL
 - JWT
+![img_1.png](src/main/resources/templates/img/jwt.png)
+
+_Flow process:_
+![img.png](src/main/resources/templates/img/flow_access.png)
+
+_Architecture:_
+![img_2.png](src/main/resources/templates/img/security_architecture.png)
 
 ### MỤC LỤC
 
 1. [Dependencies](#i-dependencies-)
 2. [Configuration](#ii-configuration)
 3. [API-Docs](#iii-api-docs)
+4. [Refresh Token](#iv-refresh-token)
+5. [Authorization](#v-authorization)
+6. [Reference](#vi-reference)
 
 ### I. Dependencies 
 `pom.xml`
@@ -189,6 +199,7 @@ public class SecurityConfig {
 
 ### III. API-Docs
 
+_Config:_
 ```xml
 <!-- Swagger -->
 <dependency>
@@ -200,3 +211,13 @@ public class SecurityConfig {
 
 - Swagger UI at http://localhost:8080/swagger-ui/index.html
 - OpenAPI JSON documentation at http://localhost:8080/v3/api-docs
+
+### IV. Refresh Token
+![img_1.png](src/main/resources/templates/img/refreshToken_flow.png)
+
+### V. Authorization
+
+### VI. Reference
+1. ChatGPT
+2. https://github.com/bezkoder/spring-boot-refresh-token-jwt
+

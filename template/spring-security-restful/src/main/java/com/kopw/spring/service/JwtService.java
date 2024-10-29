@@ -17,7 +17,8 @@ public class JwtService {
 
     @Value("${jwt.secret}")
     private String secretKey;
-    private final int jwtExpirationMs = 86400000;
+    private final int JWT_EXPIRATION_MS = 86400000;
+    private final int REFRESH_EXPIRATION_MS = 604800000; // 7 days for refresh token
 
     private SecretKey getSecretKey() {
         // Decode the Base64 key and create a SecretKey
@@ -51,14 +52,18 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return createToken(userDetails.getUsername());
+        return createToken(userDetails.getUsername(), JWT_EXPIRATION_MS);
     }
 
-    private String createToken(String username) {
+    public String generateRefreshToken(UserDetails userDetails) {
+        return createToken(userDetails.getUsername(), REFRESH_EXPIRATION_MS);
+    }
+
+    private String createToken(String username, int expirationMs) {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                .setExpiration(new Date((new Date()).getTime() + expirationMs))
                 .signWith(getSecretKey())
                 .compact();
     }
@@ -70,5 +75,10 @@ public class JwtService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public Boolean validateToken(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }
