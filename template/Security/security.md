@@ -98,3 +98,124 @@ Ví dụ: một request HTTP sẽ…
 Khái niệm này được gọi là FilterChain
 
 ### FilterChain & Security Configuration DSL
+
+Mặc định khởi động ứng dụng web của mình. Ta sẽ thấy thông báo sau:
+
+```java
+2020-02-25 10:24:27.875  INFO 11116 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46320c9a, org.springframework.security.web.context.SecurityContextPersistenceFilter@4d98e41b, org.springframework.security.web.header.HeaderWriterFilter@52bd9a27, org.springframework.security.web.csrf.CsrfFilter@51c65a43, org.springframework.security.web.authentication.logout.LogoutFilter@124d26ba, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@61e86192, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@10980560, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@32256e68, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@52d0f583, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5696c927, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5f025000, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e7abaf7, org.springframework.security.web.session.SessionManagementFilter@681c0ae6, org.springframework.security.web.access.ExceptionTranslationFilter@15639d09, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f7be6c8]|
+```
+
+Nếu ta mở rộng một dòng đó thành một list, nó sẽ giống như Spring Security không chỉ cài đặt một bộ lọc, thay vào đó, nó cài đặt toàn bộ một filterchain bao gồm 15 (!) bộ lọc khác nhau.
+
+Vì vậy, khi một HTTPRequest đến, nó sẽ đi qua tất cả 15 bộ lọc này, trước khi request cuối cùng truy cập vào @RestControllers. Thứ tự cũng quan trọng, bắt đầu từ trên cùng list đó và đi xuống đáy.
+
+![img](images/defaultSecurityFilterChain.png)
+
+#### Phân tích FilterChain của Spring
+
+Một số Filter:
+
+- BasicAuthenticationFilter : Cố gắng tìm Basic Auth HTTP Header theo request và nếu tìm thấy, cố gắng xác thực người dùng bằng username và password của header.
+
+- UsernamePasswordAuthenticationFilter : Cố gắng tìm tham số request username/password hay POST body và nếu được tìm thấy, cố gắng authenticate user bằng các giá trị đó.
+
+- DefaultLoginPageGeneratingFilter : Tạo trang login cho bạn, nếu bạn không disable tính năng đó. Bộ lọc NÀY là lý do tại sao bạn nhận được trang đăng nhập mặc định khi bật Spring Security.
+
+- DefaultLogoutPageGeneratingFilter : Tạo trang logout cho bạn, nếu bạn không disable tính năng đó.
+
+- FilterSecurityInterceptor : Thực hiện authorization của bạn
+
+_=> Những bộ lọc đó, phần lớn, chính là Spring Security. Không hơn, không kém. Chúng làm tất cả công việc. Những gì còn lại cho bạn là cấu hình cách chúng hoạt động, tức URL nào cần bảo vệ, URL nào cần bỏ qua và bảng cơ sở dữ liệu nào sẽ được sử dụng để authenticate._
+
+### Cách cấu hình Spring Security: WebSecurityConfigurerAdapter
+
+```java
+@Configuration
+@EnableWebSecurity // (1)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // (1)
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {  // (2)
+        http
+            .authorizeRequests()
+                .antMatchers("/", "/home").permitAll() // (3)
+                .anyRequest().authenticated() // (4)
+                .and()
+            .formLogin() // (5)
+                .loginPage("/login") // (5)
+                .permitAll()
+                .and()
+            .logout() // (6)
+                .permitAll()
+                .and()
+            .httpBasic(); // (7)
+    }
+}
+```
+
+### Authentication với Spring Security
+
+Khi nói đến authentication và Spring Security, ta có ba kịch bản sau:
+
+- **Mặc định** : Bạn có thể truy cập (hashed) password của user, bởi vì bạn có thông tin chi tiết của mình (username, password) được lưu chẳng hạn trong một bảng database.
+
+- **Ít phổ biến hơn** : Bạn không thể truy cập password (hashed) của user. Đây là trường hợp nếu user và password của bạn được lưu trữ ở một nơi khác, chẳng hạn như trong một sản phẩm quản lý danh tính của bên thứ ba cung cấp dịch vụ REST cho authentication. Hãy thử tìm hiểu: [Atlassian Crowd](https://www.atlassian.com/software/crowd).
+
+- **Cũng phổ biến** : Bạn muốn sử dụng OAuth2 hoặc “Đăng nhập bằng Google / Twitter / v.v.” (OpenID), khả năng kết hợp với JWT. Sau đó, không có điều nào có thể áp dụng thì bạn nên chuyển thẳng đến phần OAuth2.
+
+Lưu ý : Tùy thuộc vào bạn rơi vào kịch bản nào, bạn cần chỉ định các @Beans khác nhau để Spring Security hoạt động, nếu không bạn sẽ nhận được các exception khá khó hiểu (như NullPointerException nếu bạn quên chỉ định PasswordEncoder).
+
+#### 1. UserDetailsService: Có quyền truy cập vào password của user
+Trong trường hợp này, Spring Security cần bạn xác định hai bean để thiết lập và chạy authentication
+
+1. Một UserDetailsService.
+
+2. Một PasswordEncoder
+
+Chỉ định một UserDetailsService đơn giản như sau:
+```java
+@Bean
+public UserDetailsService userDetailsService() {
+    return new MyDatabaseUserDetailsService(); // (1)
+}
+
+public class MyDatabaseUserDetailsService implements UserDetailsService {
+
+    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { // (1)
+        // 1. Load the user from the users table by username. If not found, throw UsernameNotFoundException.
+        // 2. Convert/wrap the user to a UserDetails object and return it.
+        return someUserDetails;
+    }
+}
+
+public interface UserDetails extends Serializable { // (2)
+
+    String getUsername();
+
+    String getPassword();
+
+    // <3> more methods:
+    // isAccountNonExpired,isAccountNonLocked,
+    // isCredentialsNonExpired,isEnabled
+}
+```
+#### Các Implementation sẵn có
+Một lưu ý nhỏ: Bạn luôn có thể tự mình triển khai các interface UserDetailsService và UserDetails.
+
+Tuy nhiên, bạn cũng có thể thay thế bằng các implementations có sẵn của Spring Security mà bạn có thể sử dụng/configure/extend/override.
+
+- JdbcUserDetailsManager, là một UserDetailsService dựa trên JDBC (database). Bạn có thể cấu hình nó để khớp với cấu trúc bảng/cột user của mình .
+
+- InMemoryUserDetailsManager , giữ tất cả các chi tiết user in-memory và rất tốt cho việc test.
+
+- org.springframework.security.core.userdetail.User, là một implementation UserDetails mặc định, hợp lý mà bạn có thể sử dụng. Điều đó có nghĩa là có khả năng ánh xạ/sao chép giữa các entity/ bảng database của bạn và class User này. Ngoài ra, bạn có thể chỉ cần làm cho các entity của mình implement interface UserDetails.
+
+
+#### PasswordEncoders
+
+```java
+@Bean
+public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    return new BCryptPasswordEncoder();
+}
+```
