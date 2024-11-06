@@ -6,7 +6,7 @@
 
 - Khái niệm OAuth2:
 
-    ![img.png](images/oauth_flow.png)
+    ![img.png](../images/oauth_flow.png)
     + `Resource Owner`:
     + `Authorization Server`:
     + `Resource Server`:
