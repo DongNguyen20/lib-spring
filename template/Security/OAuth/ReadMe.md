@@ -66,4 +66,4 @@ spring:
 ```
 
 #### 3. Demo
-[demo](/spring-oauth)
+[demo](https://github.com/DongNguyen20/lib-spring/tree/feature/lib-docs/template/Security/OAuth/spring-oauth)
