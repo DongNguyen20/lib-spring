@@ -139,6 +139,10 @@ UserResponse response = stub.getUser(UserRequest.newBuilder().setUserId("123").b
 System.out.println("User: " + response.getName());
 ```
 
+🚀 **Xử lý lỗi trong gRPC (Error Handling)**
+
+[_Error Handling_](src/main/resources/static/ErrorHandling.md)
+
 ## 3️⃣ Kiến thức nâng cao
 
 🔹 3.1 Bảo mật & Authentication
