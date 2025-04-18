@@ -1,78 +1,175 @@
-# Table of Contents
+## 🧭 Table of Contents
 
-## I. Java Core
+1. [Java Fundamentals](#i--java-fundamentals)
+2. [Java Advanced Topics](#ii--java-advanced-topics)
+3. [OOP & Design Patterns](#iii--oop--design-patterns)
+4. [Databases](#iv--databases)
+5. [Spring Ecosystem](#v--spring-ecosystem)
+6. [Microservices Architecture](#vi--microservices-architecture)
+7. [CI/CD & DevOps](#vii--cicd--devops)
+8. [Cloud Platforms](#viii--cloud-platforms)
+9. [Security & Authorization](#ix--security--authorization)
+10. [Monitoring & Observability](#x--monitoring--observability)
+11. [Others](#xi--others)
 
-#### 1. [Base](review/src/myjava/docs/Base.md)
-#### 2. [Collections](review/src/myjava/docs/Collection.md)
-#### 3. [Stream](review/src/myjava/docs/Stream.md)
-#### 4. File I/O
-#### 5. Multithreading & Concurrency
-#### 6. Exception Handling
-####
-#### 7. Design Pattern
+---
 
-## II. Database
+## I. ☕ Java Fundamentals
 
-#### 1. SQL
-#### 2. NoSQL
+- [x] [Java Base](review/src/myjava/docs/Base.md)
+- [x] [Collections](review/src/myjava/docs/Collection.md)
+- [x] [Stream API](review/src/myjava/docs/Stream.md)
+- [ ] File I/O
+- [ ] Exception Handling
+- [ ] Java Memory Management (Stack vs Heap, GC, etc.)
+- [ ] Java Annotations
+- [ ] Generics & Reflection
+- [ ] JUnit/TestNG (Testing)
+- [ ] Logging (SLF4J, Logback)
 
-## III. Spring
+---
 
-#### 1. **Core**
-#### 2. **Spring JPA**
+## II. ⚙️ Java Advanced Topics
 
-   - Hibernate
-   - MyBatis
+- [ ] Functional Programming (Lambdas, Optional, Method References)
+- [ ] CompletableFuture & Concurrency
+- [ ] Java Module System
+- [ ] Performance Tuning
+- [ ] JVM Internals (JIT, Classloader, GC types)
 
-#### 3. **Spring Security**
-    
-   -  [Security](template/Security/security.md)
-   -  [Authentication Way](template/Security/AuthenticationWay.md)
-   -  [Thymeleaf](template/spring-security-thymeleaf/ReadMe.md)
-   -  [Restful Api](template/spring-security-restful/ReadMe.md)
-   -  [OAuth2](template/Security/OAuth/ReadMe.md)
-#### 4. **Spring AOP**
-   - [AOP](review/src/spring/springAOP.md)
-   
-#### 5. **Spring Cloud**
+---
 
-   - Spring Eureka Discovery
-   - API Gateway
+## III. 📦 OOP & Design Patterns
 
-#### 6. **Spring Webflux**
+- [ ] SOLID Principles
+- [ ] OOP với Java
+- [ ] Common Design Patterns:
+    - Singleton, Factory, Strategy, Observer, etc.
 
-#### 7. Spring gRPC
+---
 
-- [gRPC](template/spring-gRPC/ReadMe.md)
+## IV. 🗃️  Databases
 
-#### 8. Spring GraphQL
+### 1. Relational
+- [ ] SQL cơ bản & nâng cao
+- [ ] JDBC
+- [ ] JPA/Hibernate
+- [ ] Transaction Management
 
-- [GraphQL](template/spring-graphql/src/main/resources/static/doc/GraphQL.md)
+### 2. NoSQL
+- [ ] MongoDB
+- [ ] Redis
 
-## IV. Microservices
+---
+
+## V. 🍃  Spring Ecosystem
+
+### 1. Spring Core
+- [ ] Dependency Injection
+- [ ] Bean Lifecycle
+
+### 2. Spring Boot
+- [ ] Auto Configuration
+- [ ] Properties & Profiles
+
+### 3. Spring Data
+- [ ] Spring Data JPA
+- [ ] MyBatis (option)
+
+### 4. Spring Security
+- [x] [Security Overview](template/Security/security.md)
+- [x] [Authentication](template/Security/AuthenticationWay.md)
+- [x] [Thymeleaf](template/spring-security-thymeleaf/ReadMe.md)
+- [x] [REST API](template/spring-security-restful/ReadMe.md)
+- [x] [OAuth2](template/Security/OAuth/ReadMe.md)
+
+### 5. Spring AOP
+- [x] [Spring AOP](review/src/spring/springAOP.md)
+
+### 6. Spring Web (MVC + REST)
+
+### 7. Spring Cloud 🍂
+- [ ] Eureka
+- [ ] API Gateway
+- [ ] Config Server
+- [ ] Resilience4j / Circuit Breaker
+
+### 8. Reactive
+- [ ] Spring WebFlux
+
+### 9. Communication
+- [x] [gRPC](template/spring-gRPC/ReadMe.md)
+- [x] [GraphQL](template/spring-graphql/src/main/resources/static/doc/GraphQL.md)
+
+---
+
+## VI. 🧩 Microservices Architecture
+
+- [ ] Microservices communication (REST, gRPC, Messaging)
+- [ ] API Gateway
+- [ ] Service Discovery
+- [ ] Config & Centralized Logging
+- [ ] Distributed Tracing (Zipkin, Sleuth)
+- [ ] Kafka, RabbitMQ
+
+---
+
+## VII. 🚀 CI/CD & DevOps
+
+- [x] [Git](review/src/git/Git.md)
+- [x] [Docker](review/src/deploy/docs/Docker.md)
+- [x] [Jenkins](review/src/deploy/docs/Jenkins.md)
+- [ ] Docker Compose
+- [ ] Kubernetes ☸️
+- [ ] Helm
+- [ ] Terraform (Infrastructure as Code)
+
+---
+
+## VIII. ☁️ Cloud Platforms
+
+- [ ] AWS 
+- [ ] Azure
+- [ ] Google Cloud (GCP)
+
+---
+
+## IX. 🔐 Security & Authorization
+
+- [ ] JWT, Refresh Token
+- [ ] CSRF, CORS
+- [ ] RBAC, ABAC (Casbin)
+- [ ] OWASP Top 10
+
+---
+
+## X. 🔎 Monitoring & Observability
+
+- [ ] Micrometer
+- [ ] Prometheus & Grafana
+- [ ] ELK stack (Elasticsearch, Logstash, Kibana)
+- [ ] OpenTelemetry
+
+---
+
+## XI. 📚 Others
+
+- [x] [Internet cơ bản](restful-spring/docs/BaseInternet.md)
+- [ ] Elastic Search
+- [ ] Flyway (DB versioning)
+- [ ] JMix (Low-code Java Platform)
+
+---
+
+## XII. 🧪 Dự án thực hành đề xuất
 
 
-## V. CI/CD
 
-   + [Git](review/src/git/Git.md)
-   + [Docker](review/src/deploy/docs/Docker.md)
-   + [Jenkins](review/src/deploy/docs/Jenkins.md)
-   + Kubernetes ☸️
+- E-Commerce REST API (Spring Boot + JWT + JPA)
+- Social Network mini
+- Chat app realtime (WebSocket + Redis)
+- Portfolio microservice (cho GitHub cá nhân)
 
-## VI. Cloud
 
-### 1. AWS
-### 2. Azure
-### 3. Google Cloud
-
-## VII. Others
-
-- [Internet](restful-spring/docs/BaseInternet.md)
-- Kafka
-- Redis
-- Message Queue
-- Elastic Search
-- Flyway
-- Casbin
-- Jmix
-- [↑ 𓂃🖊 ](#i-java-core)
+| [👩🏻‍💻 to be Expert](review/src/blog/tobeExpert.md)                       | [↑ 𓂃🖊 ](#-table-of-contents) |
+|:----------------------------------------------------------------------------|:-------------------------------|
