@@ -43,3 +43,5 @@ http.rememberMe()
 - API Key thường được sử dụng để xác thực trong các ứng dụng RESTful hoặc dịch vụ không cần đăng nhập qua giao diện.
 - API Key thường được gửi trong request header hoặc như một tham số URL.
 
+---
+[↩ 🏠︎ Home : ̗̀➛](../../List Contents.md)

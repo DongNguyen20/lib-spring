@@ -1,16 +1,30 @@
-# Memory 💿
+## 1. Memory 💿
 ![img.png](../img/Memory.png)
 
-|**Stack Mempory**| **Heap Memmory** |
-| :---| :---|
-|Lưu trữ các biến local trong hàm và lời gọi hàm ở runtime trong một Thread java.|Lưu các Objects|
-|Thời gian sống của bộ nhớ Heap dài hơn so với Stack.Thời gian sống của object phụ thuộc vào Garbage Collection của java|Life is short|
-|Các objects trong Heap đều được truy cập bởi tất cả các các nơi trong ứng dụng, bởi các threads khác nhau| Sử dụng bởi 1 Thread duy nhất|
-|Cơ chế quản lý của Heap thì phức tạp hơn. Heap được phân làm 2 loại Young-Generation, Old-Generation| Cơ chế hoạt động là LIFO (Last-In-First-Out)|
-|Dung lượng Heap thường lớn hơn Stack|Bộ nhớ stack thường nhỏ|
+#### 📊 Bảng So Sánh Bộ Nhớ Stack và Heap trong Java
 
-### DataType
+| Tiêu chí                     | **Stack Memory**                                      | **Heap Memory**                                       |
+|-----------------------------|--------------------------------------------------------|--------------------------------------------------------|
+| 📦 **Lưu trữ cái gì?**        | Biến cục bộ, tham số hàm, lời gọi method             | Các object (được tạo bằng `new`), biến instance       |
+| 🧠 **Quản lý bởi**            | JVM, tự động theo cấu trúc LIFO                      | JVM, do Garbage Collector quản lý                    |
+| ⚡ **Tốc độ**                 | Nhanh hơn (vì quản lý đơn giản)                      | Chậm hơn do quản lý phức tạp                         |
+| 🔁 **Phạm vi sống**           | Biến sẽ bị xóa sau khi method kết thúc               | Tồn tại cho đến khi không còn tham chiếu              |
+| 📏 **Kích thước**             | Nhỏ hơn Heap                                         | Lớn hơn Stack                                         |
+| 🚫 **Lỗi thường gặp**         | `StackOverflowError` (gọi đệ quy vô hạn)             | `OutOfMemoryError` (không đủ bộ nhớ Heap)             |
+| 🔄 **Chia sẻ dữ liệu**        | Không (chỉ trong method hiện tại)                   | Có (các method khác có thể truy cập cùng object)     |
+| 🛠️ **Cấp phát**               | Tĩnh (fixed khi gọi method)                         | Động (qua `new`)                                     |
+| ✅ **Dọn dẹp**                | Tự động khi method kết thúc                         | GC (Garbage Collector) dọn khi object không dùng nữa |
+| 🧪 **Ví dụ lưu trữ**          | `int x = 5;`                                        | `Person p = new Person();`                           |
+
+### 2. DataType
 ![img.png](../img/java_datatype.png)
 
-### String, StringBuilder, StringBuffer
+### 3. String, StringBuilder, StringBuffer
 ![img.png](../img/StringPool.png)
+
+### 4. Scanner
+
+### 5. OOP
+
+---
+[↩ 🏠︎ Home : ̗̀➛](../../../../List Contents.md)

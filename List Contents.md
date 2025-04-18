@@ -6,8 +6,10 @@
 #### 2. [Collections](review/src/myjava/docs/Collection.md)
 #### 3. [Stream](review/src/myjava/docs/Stream.md)
 #### 4. File I/O
-#### 5. Thread
-#### 6. Design Pattern
+#### 5. Multithreading & Concurrency
+#### 6. Exception Handling
+####
+#### 7. Design Pattern
 
 ## II. Database
 
@@ -41,20 +43,21 @@
 
 #### 7. Spring gRPC
 
-[gRPC](template/spring-gRPC/ReadMe.md)
+- [gRPC](template/spring-gRPC/ReadMe.md)
 
 #### 8. Spring GraphQL
 
-[GraphQL](template/spring-graphql/src/main/resources/static/doc/GraphQL.md)
+- [GraphQL](template/spring-graphql/src/main/resources/static/doc/GraphQL.md)
 
 ## IV. Microservices
 
 
 ## V. CI/CD
 
-   + Git
+   + [Git](review/src/git/Git.md)
    + [Docker](review/src/deploy/docs/Docker.md)
    + [Jenkins](review/src/deploy/docs/Jenkins.md)
+   + Kubernetes ☸️
 
 ## VI. Cloud
 
@@ -71,3 +74,5 @@
 - Elastic Search
 - Flyway
 - Casbin
+- Jmix
+- [↑ 𓂃🖊 ](#i-java-core)

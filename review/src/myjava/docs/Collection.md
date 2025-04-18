@@ -98,3 +98,7 @@ _interface cũng dùng để so sánh các đối tượng_
 |Sửa đổi lớp hiện tại|Phải sửa đổi lớp hiện tại để triển khai Comparable|Không cần sửa đổi lớp hiện tại
 |Số lượng phương thức so sánh|Chỉ có một phương thức so sánh, giới hạn trong một tiêu chí|Có thể tạo ra nhiều phương thức so sánh khác nhau
 |Mặc định|Dùng để cung cấp trật tự tự nhiên cho đối tượng|Dùng để định nghĩa trật tự tùy chỉnh, có thể thay đổi trật tự dễ dàng
+
+
+---
+[↩ 🏠︎ Home : ̗̀➛](../../../../List Contents.md)
