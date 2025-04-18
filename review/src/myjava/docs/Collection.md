@@ -101,4 +101,4 @@ _interface cũng dùng để so sánh các đối tượng_
 
 
 ---
-[↩ 🏠︎ Home : ̗̀➛](../../../../List Contents.md)
+[↩ 🏠︎ Home : ̗̀➛](../../../../List%20Contents.md)
