@@ -21,11 +21,14 @@
 - [x] [Stream API](review/src/myjava/docs/Stream.md)
 - [ ] File I/O
 - [ ] Exception Handling
+- [ ] [Multithreading](review/src/myjava/docs/Multithreading.md)
 - [ ] Java Memory Management (Stack vs Heap, GC, etc.)
 - [ ] Java Annotations
 - [ ] Generics & Reflection
 - [ ] JUnit/TestNG (Testing)
 - [ ] Logging (SLF4J, Logback)
+- [ ] Regex
+- [ ] Networking
 
 ---
 
@@ -36,7 +39,7 @@
 - [ ] Java Module System
 - [ ] Performance Tuning
 - [ ] JVM Internals (JIT, Classloader, GC types)
-
+- [ ] Reactive Programming
 ---
 
 ## III. 📦 OOP & Design Patterns
@@ -79,7 +82,6 @@
 ### 4. Spring Security
 - [x] [Security Overview](template/Security/security.md)
 - [x] [Authentication](template/Security/AuthenticationWay.md)
-- [x] [Thymeleaf](template/spring-security-thymeleaf/ReadMe.md)
 - [x] [REST API](template/spring-security-restful/ReadMe.md)
 - [x] [OAuth2](template/Security/OAuth/ReadMe.md)
 
@@ -87,6 +89,7 @@
 - [x] [Spring AOP](review/src/spring/springAOP.md)
 
 ### 6. Spring Web (MVC + REST)
+- [x] [Thymeleaf](template/spring-security-thymeleaf/ReadMe.md)
 
 ### 7. Spring Cloud 🍂
 - [ ] Eureka
