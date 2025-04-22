@@ -6,6 +6,7 @@
 
 _**Multithreading** là kỹ thuật cho phép một chương trình thực thi nhiều luồng (thread) cùng lúc, giúp tận dụng tốt hơn tài nguyên CPU và cải thiện hiệu suất chương trình._
 
+![img](../img/program_process_thread.gif)
 
 ### 👣  So sánh: Multithreading, Parallelism,  Concurrency vs Asynchronization vs Synchronization
 

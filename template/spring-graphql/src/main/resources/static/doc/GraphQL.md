@@ -14,6 +14,8 @@
 
 🔍 So sánh GraphQL vs REST
 
+![img.png](../../static/img/RestVsGraphql.gif)
+
 | Tiêu chí         |	REST API|	GraphQL|
 |:-----------------|:--|:--|
 | Data Fetching    |	API trả về tất cả dữ liệu theo route cụ thể|	Chỉ lấy đúng dữ liệu cần thiết|

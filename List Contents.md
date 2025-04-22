@@ -144,6 +144,11 @@
 - [ ] RBAC, ABAC (Casbin)
 - [ ] OWASP Top 10
 
+![img.png](12tipssecurity.gif)
+
+![img.png](authenway.gif)
+
+
 ---
 
 ## X. 🔎 Monitoring & Observability

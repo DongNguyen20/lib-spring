@@ -3,6 +3,9 @@
 **What?**: Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
 
 ## Introduction
+
+![img](../img/howtodockerwork.gif)
+
 ### Run first container
 `docker run -d -p 8080:80 docker/welcome-to-docker`
 Giải thích:

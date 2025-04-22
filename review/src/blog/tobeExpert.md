@@ -143,5 +143,14 @@
 
 ---
 
+# Should KNOW 
+
+_source: ByteByteGo.com_
+
+![img.png](20system_design.png)
+
+![img.png](8DataStructures.png)
+---
+
 > ✅ Mục tiêu: Không chỉ "biết nhiều", mà **biết sâu**, làm chủ tư duy hệ thống và sẵn sàng **đồng hành cùng team & sản phẩm lâu dài**.
 
