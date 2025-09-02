@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgre_db
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+
+  quartz:
+    auto-startup: false
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+
+
+server:
+  port: 8086
